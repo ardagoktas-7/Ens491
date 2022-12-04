@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import ReactGA from "react-ga";
+import $ from "jquery";
+import "./App.css";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import About from "./Components/About";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      foo: "bar",
+      
+    };
+
+    ReactGA.initialize("UA-110570651-1");
+    ReactGA.pageview(window.location.pathname);
+  }
+
+
+
+  render() {
+    return (
+      <div className="App">
+        <Header data={Header} />
+        <About data={About} />
+        <Footer data={Footer} />
+      </div>
+    );
+  }
 }
 
 export default App;
